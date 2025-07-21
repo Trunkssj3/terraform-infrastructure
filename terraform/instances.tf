@@ -102,7 +102,7 @@ resource "aws_lb" "web" {
 
 # 5. Target Group
 resource "aws_lb_target_group" "web" {
-  name     = "web-target-group"
+  name     = "web-target-group-ben"
   port     = 3000
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
