@@ -9,7 +9,7 @@ resource "aws_security_group" "instance_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -48,11 +48,11 @@ resource "aws_security_group" "alb_sg" {
 
 # 3. EC2 Instances
 resource "aws_instance" "web_1" {
-  ami           = "ami-053b12d3152c0cc71"  
-  instance_type = "t3a.micro"
-  subnet_id     = aws_subnet.public_1.id
+  ami                    = "ami-053b12d3152c0cc71"
+  instance_type          = "t3a.micro"
+  subnet_id              = aws_subnet.public_1.id
   vpc_security_group_ids = [aws_security_group.instance_sg.id]
-  
+
   user_data = <<-EOF
     #!/bin/bash
     sudo apt-get update -y
@@ -70,11 +70,11 @@ resource "aws_instance" "web_1" {
 }
 
 resource "aws_instance" "web_2" {
-  ami           = "ami-053b12d3152c0cc71"
-  instance_type = "t3a.micro"
-  subnet_id     = aws_subnet.public_2.id
+  ami                    = "ami-053b12d3152c0cc71"
+  instance_type          = "t3a.micro"
+  subnet_id              = aws_subnet.public_2.id
   vpc_security_group_ids = [aws_security_group.instance_sg.id]
-  
+
   user_data = <<-EOF
     #!/bin/bash
     sudo apt-get update -y
